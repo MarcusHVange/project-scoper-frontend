@@ -8,8 +8,8 @@ const StartPage = () => {
 					Let's talk about your idea
 				</h1>
 				<p className="text-muted-foreground text-center text-xl">
-					Check out our tutorial and learn how to get the most out of this tool.
-					When you feel ready then click the start button.
+					Check out our tutorial and learn how to get the most out of this tool. When you
+					feel ready then click the start button.
 				</p>
 				<p className="text-muted-foreground italic mt-6 mb-8 text-center">
 					Estimated Time: 10 min.

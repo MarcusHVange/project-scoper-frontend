@@ -1,0 +1,13 @@
+# Prettier ignore patterns
+dist
+node_modules
+coverage
+.next
+.nuxt
+.output
+.vite
+*.min.js
+*.min.css
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

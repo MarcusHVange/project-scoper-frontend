@@ -49,8 +49,7 @@
 
 @font-face {
 	font-family: "Poppins";
-	src: url("./assets/fonts/Poppins/Poppins-SemiBoldItalic.ttf")
-		format("truetype");
+	src: url("./assets/fonts/Poppins/Poppins-SemiBoldItalic.ttf") format("truetype");
 	font-weight: 600;
 	font-style: italic;
 }
