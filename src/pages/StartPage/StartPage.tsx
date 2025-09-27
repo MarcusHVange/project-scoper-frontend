@@ -1,6 +1,9 @@
 import { Button } from "@/components/ui/button"
+import { useNavigate } from "react-router"
 
 const StartPage = () => {
+	const navigate = useNavigate()
+
 	return (
 		<div className="flex justify-center items-center w-full h-screen">
 			<div className="max-w-[550px]">
@@ -18,6 +21,7 @@ const StartPage = () => {
 					<Button
 						variant="default"
 						className="flex-1 rounded-full cursor-pointer text-lg py-5"
+						onClick={() => navigate("/scoper")}
 					>
 						Start
 					</Button>
