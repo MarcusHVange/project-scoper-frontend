@@ -1,14 +1,14 @@
 import { Thread } from "@/components/thread"
 import { RuntimeProvider } from "@/providers/RuntimeProvider"
 
-const Test = () => {
+const Chat = () => {
 	return (
 		<RuntimeProvider>
-			<div className="grid h-dvh px-4 pt-16">
+			<div className="grid w-full h-dvh px-4 pt-16">
 				<Thread title="What is your project idea?" />
 			</div>
 		</RuntimeProvider>
 	)
 }
 
-export default Test
+export default Chat

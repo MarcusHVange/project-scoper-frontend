@@ -3,6 +3,7 @@ import {
 	AssistantRuntimeProvider,
 	useLocalRuntime,
 	type ChatModelAdapter,
+	type ThreadMessageLike,
 } from "@assistant-ui/react"
 
 const ModelAdapter: ChatModelAdapter = {
@@ -33,12 +34,26 @@ const ModelAdapter: ChatModelAdapter = {
 	},
 }
 
+const initialMessage: ThreadMessageLike = {
+	id: "initial-message",
+	role: "assistant",
+	content: [
+		{
+			type: "text",
+			text: "Hello. Let’s explore your idea together. Please give me an introduction to the project that you have in mind.",
+		},
+	],
+	createdAt: new Date(),
+}
+
 export function RuntimeProvider({
 	children,
 }: Readonly<{
 	children: ReactNode
 }>) {
-	const runtime = useLocalRuntime(ModelAdapter)
+	const runtime = useLocalRuntime(ModelAdapter, {
+		initialMessages: [initialMessage],
+	})
 
 	return <AssistantRuntimeProvider runtime={runtime}>{children}</AssistantRuntimeProvider>
 }
