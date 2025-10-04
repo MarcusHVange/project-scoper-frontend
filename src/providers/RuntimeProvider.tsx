@@ -7,29 +7,39 @@ import {
 } from "@assistant-ui/react"
 
 const ModelAdapter: ChatModelAdapter = {
-	async run({ messages, abortSignal }) {
-		// TODO replace with your own API
-		const result = await fetch("http://127.0.0.1:8000/chat", {
+	async *run({ messages, abortSignal }) {
+		const response = await fetch("http://127.0.0.1:8000/chat/stream", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			// forward the messages in the chat to the API
-			body: JSON.stringify({
-				messages,
-			}),
-			// if the user hits the "cancel" button or escape keyboard key, cancel the request
+			body: JSON.stringify({ messages }),
 			signal: abortSignal,
 		})
 
-		const data = await result.json()
-		return {
-			content: [
-				{
-					type: "text",
-					text: data.text,
-				},
-			],
+		if (!response.body) {
+			throw new Error("Response body is null")
+		}
+
+		const reader = response.body.getReader()
+		const decoder = new TextDecoder()
+		let accumulatedText = ""
+
+		try {
+			while (true) {
+				const { done, value } = await reader.read()
+				if (done) break
+
+				const chunk = decoder.decode(value, { stream: true })
+				accumulatedText += chunk
+
+				// Yield immediately after receiving each chunk
+				yield {
+					content: [{ type: "text", text: accumulatedText }],
+				}
+			}
+		} finally {
+			reader.releaseLock()
 		}
 	},
 }
