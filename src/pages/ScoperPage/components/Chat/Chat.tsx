@@ -4,7 +4,7 @@ import { RuntimeProvider } from "@/providers/RuntimeProvider"
 const Chat = () => {
 	return (
 		<RuntimeProvider>
-			<div className="grid w-full h-dvh px-4 pt-16">
+			<div className="h-full *:overflow-hidden pt-10">
 				<Thread title="What is your project idea?" />
 			</div>
 		</RuntimeProvider>

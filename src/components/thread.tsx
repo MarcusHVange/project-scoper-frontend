@@ -42,7 +42,7 @@ export const Thread: FC<ThreadProps> = ({ title }) => {
 				<ThreadPrimitive.Root
 					className="aui-root aui-thread-root @container flex h-full flex-col bg-background"
 					style={{
-						["--thread-max-width" as string]: "44rem",
+						["--thread-max-width" as string]: "48rem",
 					}}
 				>
 					<ThreadPrimitive.Viewport className="aui-thread-viewport relative flex flex-1 flex-col overflow-x-auto overflow-y-scroll px-4">
